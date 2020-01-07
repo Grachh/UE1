@@ -2,6 +2,7 @@
 public class Reloj {
 	private Horario h;
 	private Fecha f;
+	private Musica m;
 	
 	
 	public Reloj() {

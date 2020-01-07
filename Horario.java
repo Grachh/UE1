@@ -41,10 +41,10 @@ public class Horario {
 		this.ss = ss;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "Horario [hh=" + hh + ", mm=" + mm + ", ss=" + ss + "]";
-//	}
+	@Override
+	public String toString() {
+		return "Horario [hh=" + hh + ", mm=" + mm + ", ss=" + ss + "]";
+	}
 	
 	
 }
