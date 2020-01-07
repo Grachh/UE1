@@ -22,14 +22,43 @@ public class LibHorarios {
 			return false;
 	}
 
+	public static boolean horarioCorrecto (Horario h)
+	{
+		int hh = h.getHh();
+		int mm = h.getMm();
+		int ss = h.getSs();
+		return (0<=hh && hh < 24) &&
+				(0<=mm && mm < 60) &&
+				(0<=ss && ss < 60);
+	}
+
+	
+	public static Horario siguienteHorario (Horario h)
+	  {
+		int hh = h.getHh();
+		int mm = h.getMm();
+		int ss = h.getSs();
+	    if (ss < 60)
+	      return new Horario (hh,mm, ss+1);
+	    else if (mm < 60)
+	      return new Horario (hh,mm+1,0);
+	    else
+	      return new Horario (hh+1,0,0);
+	  }
+	
+	
 	public static boolean en60Minutos (Horario h1, Horario h2)
 	{
-		return true;
+		
+		if (!LibHorarios.esAnterior(h1, h2))
+			return false;
+		else
+			return (aSegundos(h2)-aSegundos(h1) <= 3600);
 	}
 	
-	public static int segEntreHoraris (Horario h1, Horario h2)
+	public static int segEntreHorarios (Horario h1, Horario h2)
 	{
-		return 0;
+		return Math.abs(aSegundos(h2)-aSegundos(h1));
 	}
 
 }

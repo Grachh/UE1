@@ -31,6 +31,18 @@ public class LibFechas {
 		}
 	}
 	
+	public static Fecha siguienteFecha (Fecha fecha)
+	  {
+		int dia = fecha.getDia();
+		int mes = fecha.getMes();
+		int anio = fecha.getAnio();
+	    if (dia < diasDelMes (fecha))
+	      return new Fecha (dia+1, mes, anio);
+	    else if (mes < 12)
+	      return new Fecha (1,mes+1, anio);
+	    else
+	      return new Fecha (1,1,anio+1);
+	  }
 	
 	public static boolean anioCorrecto (Fecha f)
 	{
@@ -55,11 +67,11 @@ public class LibFechas {
 
 	public static boolean esAnterior (Fecha f1, Fecha f2)
 	{
-		final boolean mismoDia = f1.getDia() == f2.getDia();
+		final boolean mismoAnio = f1.getAnio() == f2.getAnio();
 		final boolean mismoMes = f1.getMes() == f2.getMes();
-		return (f1.getDia() < f2.getDia()) ||
-				(mismoDia && (f1.getMes() < f2.getMes())) ||
-				(mismoDia && mismoMes && (f1.getAnio() < f2.getAnio()));
+		return (f1.getAnio()) < f2.getAnio() ||
+				(mismoAnio && (f1.getMes() < f2.getMes())) ||
+				(mismoAnio && mismoMes && (f1.getDia() < f2.getDia()));
 	}
 	
 }
